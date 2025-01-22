@@ -14,4 +14,13 @@ You may be wondering why you'd even want to change your MAC address in the first
 - **Change your MAC address.** This is what you're using *MAC Daddy* for. You can change your current MAC address to any other compatible address.
 - **Input Validation.** If you accidentally input an invalid MAC address, you have no need to worry, your device will not be bricked. *MAC Daddy* automatically validates your MAC addresses so you don't have to worry.
 - **Multiple network interfaces.** If you have more than one network card or have multiple network interfaces, such as using ethernet and WiFi, *MAC Daddy* can help you. *MAC Daddy* supports changing each network interface you have individually.
-- **
+- **Backups.** MAC addresses are very hard to remember. Fortunately, *MAC Daddy* can remember for you. The first time you chnage the MAC address of an interface with *MAC Daddy*, it will save your former address. Of course, you can also reset your backups at any time.
+
+## How to use Daddy
+
+- Run `chmod u+x daddy.sh` to give yourself executing permissions to run *MAC Daddy*
+- Run `./daddy.sh [network interface] [mac address]` from the directory containing `daddy.sh`
+- This will change your MAC address to your specified new address on your specified network interface
+- The first time you run *MAC Daddy* on a network interface, it will automatically make a backup of your current MAC address before changing it
+- To restore your MAC address from a backup, run `./daddy.sh [network interface] restore`
+- *MAC Daddy* can only store one backup per interface. If you want to change your backed up address, run `./daddy.sh [network interface] clear`. This will remove your backup. To make a new one, simply change your address again. Just like the first time that you use *MAC Daddy*, it will back up your current MAC address before changing it.
