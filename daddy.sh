@@ -63,6 +63,7 @@ if [[ $2 = "restore" ]]; then
             exit
         else
             echo "MAC Address restored successfully"
+            exit
         fi
     fi
 # Checks if the user wants to clear their backup
@@ -70,6 +71,7 @@ elif [[ $2 = "clear" ]]; then
     # Looks for the interface and removes the line containing it
     sed -i "/^$1 .*/d" backup.txt
     echo "Backup for $1 interfece removed"
+    exit
 fi
 
 
@@ -80,7 +82,7 @@ if [[ $? -eq 1 ]]; then
     exit 1
 fi
 
-#ValidateInterface $1
+ValidateInterface $1
 # Checks if the interface was valid
 if [[ $? -eq 1 ]]; then
     echo "Please use a valid network interface for your device"
