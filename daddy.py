@@ -35,7 +35,9 @@ def make_backup(net_interface, mac):
         backup_file.close()
 
 def change_mac(net_interface, mac):
-    make_backup(net_interface, mac)
+    mac_file = open(f"/sys/class/net/{net_interface}/address")
+    make_backup(net_interface, mac_file.readline())
+    mac_file.close()
     first = subprocess.run(["ip", "link", "set", "dev", net_interface, "down"], capture_output=True, text=True)
     second = subprocess.run(["ip", "link", "set", "dev", net_interface, "address", mac], capture_output=True, text=True)
     third = subprocess.run(["ip", "link", "set", "dev", net_interface, "up"], capture_output=True, text=True)
@@ -50,7 +52,7 @@ address = argv[2]
 if address == "restore":
     backup = find_backup(interface)
     if backup:
-        result = change_mac(interface, address)
+        result = change_mac(interface, backup)
         if result:
             print("MAC Address restored successfully")
         else:
