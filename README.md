@@ -18,9 +18,20 @@ You may be wondering why you'd even want to change your MAC address in the first
 
 ## How to use Daddy
 
+### Shell Script
 - Run `chmod u+x daddy.sh` to give yourself executing permissions to run *MAC Daddy*
-- Run `./daddy.sh [network interface] [mac address]` from the directory containing `daddy.sh`
+- Run `sudo ./daddy.sh [network interface] [mac address]` from the directory containing `daddy.sh`
 - This will change your MAC address to your specified new address on your specified network interface
 - The first time you run *MAC Daddy* on a network interface, it will automatically make a backup of your current MAC address before changing it
-- To restore your MAC address from a backup, run `./daddy.sh [network interface] restore`
+- To restore your MAC address from a backup, run `sudo ./daddy.sh [network interface] restore`
 - *MAC Daddy* can only store one backup per interface. If you want to change your backed up address, run `./daddy.sh [network interface] clear`. This will remove your backup. To make a new one, simply change your address again. Just like the first time that you use *MAC Daddy*, it will back up your current MAC address before changing it.
+![Gif showing shell script](imgs/shell.gif)
+
+### Python Script
+- Install python
+- Run `sudo python3 daddy.py [network interface] [mac address]` from the directory containing `daddy.py`
+- This will change your MAC address to your specified new address on your specified network interface
+- The first time you run *MAC Daddy* on a network interface, it will automatically make a backup of your current MAC address before changing it
+- To restore your MAC address from a backup, run `sudo python3 daddy.py [network interface] restore`
+- *MAC Daddy* can only store one backup per interface. If you want to change your backed up address, run `python3 daddy.py [network interface] clear`. This will remove your backup. To make a new one, simply change your address again. Just like the first time that you use *MAC Daddy*, it will back up your current MAC address before changing it.
+![Gif showing python script](imgs/python.gif)

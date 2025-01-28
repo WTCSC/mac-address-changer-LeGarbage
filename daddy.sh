@@ -25,7 +25,7 @@ ValidateInterface()
 ChangeMac()
 {
     # Checks if the backup file already has a backup for the provided interface
-    grep "^$1 " backup.txt
+    grep -q "^$1 " backup.txt
     # Checks if grep failed to find a backup
     if [[ $? -ne 0 ]]; then
         # Create a backup using the interface and the current address
@@ -70,7 +70,7 @@ if [[ $2 = "restore" ]]; then
 elif [[ $2 = "clear" ]]; then
     # Looks for the interface and removes the line containing it
     sed -i "/^$1 .*/d" backup.txt
-    echo "Backup for $1 interfece removed"
+    echo "Backup for $1 interface removed"
     exit
 fi
 
